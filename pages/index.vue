@@ -4,7 +4,7 @@
 
     <v-container app>
       <v-row>
-        <v-col cols="4" v-for="personaje in personajes" :key="personaje.id" class="full-height">
+        <v-col cols="4" v-for="personaje in personajes" :key="personaje.id">
           <v-card class="mx-auto mb-8">
 
             <v-img height="300" :src="personaje.image"></v-img>
