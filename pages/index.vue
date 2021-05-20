@@ -1,59 +1,48 @@
-<template>
-  <div>
+<template >
+  <v-app>
     <Nav />
 
-    <v-container>
+    <v-container app>
       <v-row>
-        <v-col cols="4" v-for="personaje in personajes" :key="personaje.id">
-          <v-card class="mx-auto my-12" max-width="374">
-            <template slot="progress">
-              <v-progress-linear
-                color="deep-purple"
-                height="10"
-                indeterminate
-              ></v-progress-linear>
-            </template>
+        <v-col cols="4" v-for="personaje in personajes" :key="personaje.id" class="full-height">
+          <v-card class="mx-auto mb-8">
 
-            <v-img height="250" :src="personaje.image"></v-img>
+            <v-img height="300" :src="personaje.image"></v-img>
 
-            <v-card-title class="align-center">{{
+            <v-card-title class="subtitle-1 font-weight-bold deep-purple darken-2 justify-center">{{
               personaje.name
             }}</v-card-title>
-
-            <v-divider class="mx-4"></v-divider>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
-  </div>
+  </v-app>
 </template>
 
 <script>
-import axios from "axios";
+import { mapState, mapActions } from "vuex";
 import Nav from "@/components/Nav.vue";
 export default {
+  name: "app",
   components: {
     Nav
   },
   data() {
-    return {
-      personajes: []
-    };
+    return {};
+  },
+  computed: {
+    ...mapState(["personajes"])
   },
   methods: {
-    async getData() {
-      const url = "https://rickandmortyapi.com/api/character";
-      try {
-        const req = await axios(url);
-        console.log(req.data.results);
-        this.personajes = req.data.results;
-      } catch (error) {
-        console.log(error);
-      }
-    }
+    ...mapActions(["getData"])
   },
   created() {
     this.getData();
   }
 };
 </script>
+<style scoped>
+template {
+  background-color: #00a86b;
+}
+</style>

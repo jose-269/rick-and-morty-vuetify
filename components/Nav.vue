@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar dark>
+  <v-toolbar class="deep-purple darken-2 mb-10">
     <v-app-bar-nav-icon></v-app-bar-nav-icon>
     <v-toolbar-title>Rick and Morty</v-toolbar-title>
     <v-spacer></v-spacer>
